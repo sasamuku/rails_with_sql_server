@@ -1,0 +1,11 @@
+version: "3"
+services:
+  db:
+    image: ${DB_DOCKER_IMAGE}
+    container_name: db
+    hostname: db
+    ports:
+      - "2505:1433"
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: ${SA_PASSWORD}

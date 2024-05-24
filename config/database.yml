@@ -14,6 +14,7 @@ default: &default
   username: sa
   password: <%= ENV['SA_PASSWORD'] %>
   host: localhost
+  port: 2505
 
 development:
   <<: *default
