@@ -32,7 +32,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # workaround: Psych::BadAlias: Cannot load database configuration
 gem 'psych', '~> 3.1'
 
-gem 'ddtrace'
+gem 'ddtrace', '1.4.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
