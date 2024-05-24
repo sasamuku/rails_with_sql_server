@@ -9,3 +9,18 @@ services:
     environment:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: ${SA_PASSWORD}
+  datadog:
+    image: gcr.io/datadoghq/agent:latest
+    container_name: datadog
+    environment:
+      - DD_API_KEY=${DD_API_KEY}
+      - DD_APM_ENABLED=true
+      - DD_LOGS_ENABLED=false
+      - DD_SITE=ap1.datadoghq.com # アカウント作ったリージョンのドメインを指定
+    ports:
+      - "8125:8125/udp"
+      - "8126:8126"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /proc/:/host/proc/:ro
+      - /sys/fs/cgroup:/host/sys/fs/cgroup:ro
