@@ -4,9 +4,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.0.6'
+gem 'rails', '6.0.6'
 # Use sqlserver as the database for Active Record
-gem 'activerecord-sqlserver-adapter'
+gem 'activerecord-sqlserver-adapter', '6.0.0'
+gem 'tiny_tds', '2.1.5'
+
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -25,8 +27,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
-gem 'activerecord-sqlserver-adapter'
-gem 'tiny_tds'
+
+
 # workaround: Psych::BadAlias: Cannot load database configuration
 gem 'psych', '~> 3.1'
 

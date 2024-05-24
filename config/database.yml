@@ -15,6 +15,7 @@ default: &default
   password: <%= ENV['SA_PASSWORD'] %>
   host: localhost
   port: 2505
+  tds_version: 7.4
 
 development:
   <<: *default
