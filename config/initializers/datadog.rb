@@ -11,3 +11,11 @@ Datadog.configure do |c|
   c.tracing.instrument :rack, quantize: { query: { show: :all } }
   c.profiling.enabled = true
 end
+
+Datadog::Tracing.before_flush do |trace|
+  trace.spans.each do |span|
+    match_data = span&.resource&.match(/\AEXEC\s+sp_executesql\s+N'(.*?)'(,\s+N'([^']+)',\s*(.+))?\z/m)
+    span.resource = match_data[1] if match_data
+  end
+  trace
+end
