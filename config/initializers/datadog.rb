@@ -14,8 +14,10 @@ end
 
 Datadog::Tracing.before_flush do |trace|
   trace.spans.each do |span|
-    match_data = span&.resource&.match(/\AEXEC\s+sp_executesql\s+N'(.*?)'(,\s+N'([^']+)',\s*(.+))?\z/m)
-    span.resource = match_data[1] if match_data
+    if span&.service == 'sqlserver'
+      match_data = span&.resource&.match(/\AEXEC\s+sp_executesql\s+N'(.*?)'(,\s+N'([^']+)',\s*(.+))?\z/m)
+      span.resource = match_data[1] if match_data
+    end
   end
   trace
 end
